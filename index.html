@@ -385,6 +385,10 @@ header .container{padding:20px 24px;text-align:center}
     const THRESHOLD = 60; // px to trigger slide
 
     track.addEventListener('pointerdown', (e)=>{
+      // If the user pressed an actual link inside the slide, allow the
+      // link to handle the event (don't capture the pointer on the track).
+      if (e.target.closest && e.target.closest('.work-view')) return;
+
       pointerDown = true;
       startX = e.clientX;
       startTranslate = currentTranslate;
@@ -425,6 +429,20 @@ header .container{padding:20px 24px;text-align:center}
 
     // keyboard
     track.addEventListener('keydown', function(e){ if (e.key === 'ArrowRight') { e.preventDefault(); go(1) } if (e.key === 'ArrowLeft') { e.preventDefault(); go(-1) } });
+  })();
+  </script>
+
+  <script>
+  (function(){
+    // Ensure 'View website' buttons open even if carousel pointer handlers interfere.
+    document.querySelectorAll('.work-view').forEach(a => {
+      a.addEventListener('click', function(e){
+        e.stopPropagation();
+        e.preventDefault();
+        const href = this.href;
+        if (href) window.open(href, '_blank', 'noopener');
+      });
+    });
   })();
   </script>
 
