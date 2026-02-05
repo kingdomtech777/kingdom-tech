@@ -1,0 +1,5 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://kingdomtech.uk/sitemap.xml
+Host: kingdomtech.uk
