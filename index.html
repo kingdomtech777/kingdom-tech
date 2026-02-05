@@ -70,6 +70,10 @@ header .container{padding:20px 24px;text-align:center}
   .feature-row{grid-template-columns:1fr}
 }
 
+@media (max-width:420px){
+  body{font-size:18px}
+}
+
 
 </style>
 </head><body>
@@ -89,7 +93,7 @@ header .container{padding:20px 24px;text-align:center}
             <a class="btn btn--teal" href="#our-work">View Work</a>
           </div>
           <div class="hero-media">
-            <img src="images/bible-open.webp" alt="Project planning on desk" class="hero-image" />
+            <img src="images/bible-open.webp" alt="Project planning on desk" class="hero-image" loading="lazy" decoding="async" />
           </div>
         </div>
       </div>
@@ -247,7 +251,7 @@ header .container{padding:20px 24px;text-align:center}
                 <p class="work-desc">A connected platform for church communities.</p>
                 <a class="work-view" href="https://kingdomconnect.uk" target="_blank" rel="noopener">View website</a>
               </div>
-              <img src="images/kingdomconnect.uk-snapshot.webp" alt="Kingdom Connect snapshot" />
+              <img src="images/kingdomconnect.uk-snapshot.webp" alt="Kingdom Connect snapshot" loading="lazy" decoding="async" />
             </div>
 
             <div class="work-slide" data-href="https://mercy-flow.com" aria-label="Mercy Flow">
@@ -256,7 +260,7 @@ header .container{padding:20px 24px;text-align:center}
                 <p class="work-desc">Streamlined donation and outreach workflows.</p>
                 <a class="work-view" href="https://mercy-flow.com" target="_blank" rel="noopener">View website</a>
               </div>
-              <img src="images/image_2025-10-21_223753607-1024x576.webp" alt="Mercy Flow snapshot" />
+              <img src="images/image_2025-10-21_223753607-1024x576.webp" alt="Mercy Flow snapshot" loading="lazy" decoding="async" />
             </div>
 
             <div class="work-slide" data-href="https://lifespring.global" aria-label="LifeSpring Global">
@@ -265,7 +269,7 @@ header .container{padding:20px 24px;text-align:center}
                 <p class="work-desc">Global ministry resources and teaching archives.</p>
                 <a class="work-view" href="https://lifespring.global" target="_blank" rel="noopener">View website</a>
               </div>
-              <img src="images/Snapshot_lifespring.global.webp" alt="LifeSpring Global snapshot" />
+              <img src="images/Snapshot_lifespring.global.webp" alt="LifeSpring Global snapshot" loading="lazy" decoding="async" />
             </div>
           </div>
         </div>
@@ -421,9 +425,6 @@ header .container{padding:20px 24px;text-align:center}
 
     // keyboard
     track.addEventListener('keydown', function(e){ if (e.key === 'ArrowRight') { e.preventDefault(); go(1) } if (e.key === 'ArrowLeft') { e.preventDefault(); go(-1) } });
-
-    // initial center
-    setTimeout(()=> centerCurrent(false), 50);
   })();
   </script>
 
@@ -474,12 +475,38 @@ header .container{padding:20px 24px;text-align:center}
       <p>We use a short form to collect enquiries and project details — please fill it in and we'll get back to you promptly.</p>
 
       <style>
-        .google-form-embed{width:100%;max-width:980px;height:820px;border:0;border-radius:8px;box-shadow:0 14px 40px rgba(2,8,14,0.35);display:block;margin:18px auto}
-        @media(max-width:900px){.google-form-embed{height:1100px;margin:14px auto}}
+        /* Use 70% of the viewport height for the embedded Google Form.
+           This is a pragmatic, cross-origin-friendly approach — it cannot
+           guarantee removal of the form's internal scrollbar, but gives a
+           predictable display size. Keep a sensible minimum for short viewports. */
+        .google-form-embed{width:100%;max-width:980px;height:70vh;min-height:420px;border:0;border-radius:8px;box-shadow:0 14px 40px rgba(2,8,14,0.35);display:block;margin:18px auto}
+        @media(max-width:900px){
+          .google-form-embed{height:70vh;min-height:360px;margin:14px auto}
+        }
       </style>
 
       <!-- Embedded Google Form -->
-      <iframe class="google-form-embed" src="https://docs.google.com/forms/d/e/1FAIpQLSdox_hLKpp9aZcwNZ_sw6eOPsY027Lpg4g1pdyXAKD1Xby5NQ/viewform?embedded=true" title="Contact form" aria-label="Contact form"></iframe>
+      <iframe id="contactFormIframe" class="google-form-embed" src="https://docs.google.com/forms/d/e/1FAIpQLSdox_hLKpp9aZcwNZ_sw6eOPsY027Lpg4g1pdyXAKD1Xby5NQ/viewform?embedded=true" title="Contact form" aria-label="Contact form"></iframe>
+
+      <script>
+      (function(){
+        const iframe = document.getElementById('contactFormIframe');
+        if (!iframe) return;
+
+        function setIframeHeight(){
+          const vh = window.innerHeight || document.documentElement.clientHeight;
+          // 70% of viewport, with a sensible minimum to avoid tiny iframes
+          const height = Math.max(420, Math.floor(vh * 0.7));
+          iframe.style.height = height + 'px';
+        }
+
+        window.addEventListener('resize', setIframeHeight, {passive:true});
+        window.addEventListener('orientationchange', setIframeHeight);
+        window.addEventListener('load', setIframeHeight);
+        // initial run
+        setTimeout(setIframeHeight, 60);
+      })();
+      </script>
 
       <p style="text-align:center;margin-top:10px;font-size:0.98rem;color:inherit">If the form doesn't load, <a href="https://docs.google.com/forms/d/e/1FAIpQLSdox_hLKpp9aZcwNZ_sw6eOPsY027Lpg4g1pdyXAKD1Xby5NQ/viewform?usp=publish-editor" target="_blank" rel="noopener">open the form in a new tab</a> or email us at <a href="mailto:hello@kingdomtech.uk">hello@kingdomtech.uk</a>.</p>
     </div>
