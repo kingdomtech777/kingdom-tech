@@ -74,6 +74,14 @@ header .container{padding:20px 24px;text-align:center}
   body{font-size:18px}
 }
 
+/* Mobile: stack hero image above text for narrow screens */
+@media (max-width:720px){
+  .hero-grid{display:flex;flex-direction:column;gap:14px}
+  .hero-media{order:-1;display:flex;justify-content:center}
+  .hero-image{width:100%;height:auto;max-width:720px}
+  .hero-text{padding:0}
+}
+
 
 </style>
 </head><body>
@@ -318,7 +326,10 @@ header .container{padding:20px 24px;text-align:center}
     @media(max-width:900px){
       .work-track{width:100%;padding:0 12px}
       .work-slide{flex:0 0 100%;max-width:100%}
-      .work-slide img{height:320px}
+      /* Mobile: hide nav arrows and slide head; show full images (natural height) */
+      .work-nav{display:none}
+      .work-head{display:none}
+      .work-slide img{height:auto;display:block}
     }
   </style>
 
