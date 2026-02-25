@@ -325,30 +325,17 @@ header .container{padding:20px 24px;text-align:center}
 
     @media(max-width:900px){
       .work-track{width:100%;padding:0 12px}
-      .work-slide{flex:0 0 100%;max-width:100%;position:relative}
-      /* Mobile: hide nav arrows; show slide head as an overlay so title/desc/button remain visible */
+      .work-slide{flex:0 0 100%;max-width:100%;position:relative;display:flex;flex-direction:column}
+      /* Mobile: hide nav arrows; show slide head BELOW the image so image is fully visible */
       .work-nav{display:none}
-      .work-head{
-        display:block;
-        position:absolute;
-        left:0;
-        right:0;
-        bottom:0;
-        padding:18px 16px;
-        box-sizing:border-box;
-        /* stronger dark overlay for legibility + subtle blur */
-        background:linear-gradient(transparent, rgba(2,8,14,0.92));
-        color:#eef6f8;
-        z-index:3;
-        backdrop-filter: blur(6px);
-      }
-      .work-head .work-title{color:#fff;text-shadow:0 3px 10px rgba(0,0,0,0.7)}
-      .work-head .work-desc{color:#d8e6ea;text-shadow:0 2px 8px rgba(0,0,0,0.6)}
-      /* increase hit area and ensure button remains visible */
-      .work-view{background:#ffffff;color:#0b1b22;padding:12px 18px;border-radius:10px;font-weight:800;box-shadow:0 6px 18px rgba(3,10,14,0.25)}
-      .work-slide img{z-index:1}
-      .work-slide img{height:auto;display:block}
-      .work-view{position:relative;z-index:2}
+      /* place image first, metadata after it */
+      .work-slide img{order:1;height:auto;display:block;border-bottom:0}
+      .work-head{order:2;display:block;position:static;left:auto;right:auto;bottom:auto;padding:14px 0 22px;background:transparent;color:#e9eef0;box-shadow:none;backdrop-filter:none}
+      .work-head .work-title{color:#ffffff;text-shadow:none}
+      .work-head .work-desc{color:#d1e3e7}
+      /* make the 'View website' a simple clickable text link */
+      .work-view{background:transparent;color:#cfeff4;padding:0;margin-top:8px;border-radius:0;box-shadow:none;text-decoration:underline;font-weight:700}
+      .work-view:hover{text-decoration:none;opacity:0.95}
     }
   </style>
 
