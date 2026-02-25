@@ -265,7 +265,7 @@ header .container{padding:20px 24px;text-align:center}
             <div class="work-slide" data-href="https://mercy-flow.com" aria-label="Mercy Flow">
               <div class="work-head">
                 <h3 class="work-title">Mercy Flow</h3>
-                <p class="work-desc">Streamlined donation and outreach workflows.</p>
+                <p class="work-desc">Basic ministry website for outreach built very lightweight for GitHub Pages.</p>
                 <a class="work-view" href="https://mercy-flow.com" target="_blank" rel="noopener">View website</a>
               </div>
               <img src="images/image_2025-10-21_223753607-1024x576.webp" alt="Mercy Flow snapshot" loading="lazy" decoding="async" />
@@ -334,11 +334,19 @@ header .container{padding:20px 24px;text-align:center}
         left:0;
         right:0;
         bottom:0;
-        padding:16px;
+        padding:18px 16px;
         box-sizing:border-box;
-        background:linear-gradient(transparent, rgba(2,8,14,0.7));
+        /* stronger dark overlay for legibility + subtle blur */
+        background:linear-gradient(transparent, rgba(2,8,14,0.92));
         color:#eef6f8;
+        z-index:3;
+        backdrop-filter: blur(6px);
       }
+      .work-head .work-title{color:#fff;text-shadow:0 3px 10px rgba(0,0,0,0.7)}
+      .work-head .work-desc{color:#d8e6ea;text-shadow:0 2px 8px rgba(0,0,0,0.6)}
+      /* increase hit area and ensure button remains visible */
+      .work-view{background:#ffffff;color:#0b1b22;padding:12px 18px;border-radius:10px;font-weight:800;box-shadow:0 6px 18px rgba(3,10,14,0.25)}
+      .work-slide img{z-index:1}
       .work-slide img{height:auto;display:block}
       .work-view{position:relative;z-index:2}
     }
