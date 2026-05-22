@@ -1177,6 +1177,9 @@
   // Contact form — async submission via Web3Forms
   const contactForm = document.getElementById('contact-form');
   if (contactForm) {
+    const emailInput = document.getElementById('cf-email');
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
     contactForm.addEventListener('submit', async function (e) {
       e.preventDefault();
       const result = document.getElementById('cf-result');
@@ -1184,7 +1187,17 @@
       const label  = document.getElementById('cf-submit-text');
       const data   = new FormData(contactForm);
       const name   = (data.get('name')   || '').trim();
+      const email  = (data.get('email')  || '').trim();
       const reason = (data.get('reason') || '').trim();
+
+      if (!emailPattern.test(email)) {
+        result.className = 'cf-error';
+        result.textContent = 'Please enter a valid email address.';
+        emailInput.focus();
+        return;
+      }
+
+      data.set('email', email);
 
       // Build a descriptive email subject
       data.set('subject', reason
