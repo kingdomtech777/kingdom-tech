@@ -224,6 +224,19 @@
       transform: translateY(-2px);
     }
 
+    .btn-ghost {
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255,255,255,0.05);
+      color: var(--text);
+      border-color: rgba(255,255,255,0.2);
+      transform: translateY(-2px);
+    }
+
     /* ===========================
        SECTION BASE
     =========================== */
@@ -654,6 +667,165 @@
       .header-inner { padding: 12px 16px; }
       nav a { padding: 7px 10px; font-size: 0.82rem; }
     }
+
+    /* ===========================
+       CONTACT SECTION
+    =========================== */
+    #contact { background: var(--bg); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .contact-lead {
+      color: var(--muted);
+      font-size: 1.01rem;
+      line-height: 1.82;
+      margin-top: 20px;
+      margin-bottom: 30px;
+    }
+
+    .contact-reasons {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+    }
+
+    .contact-reasons li { color: #94a3b8; font-size: 0.91rem; }
+
+    .contact-form-wrap {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-card);
+      padding: 36px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-form-wrap::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--teal) 0%, transparent 70%);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      font-size: 0.81rem;
+      font-weight: 600;
+      color: #94a3b8;
+      letter-spacing: 0.02em;
+    }
+
+    .form-optional { font-weight: 400; color: var(--muted); }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: var(--bg);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 10px;
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.91rem;
+      padding: 11px 14px;
+      width: 100%;
+      transition: border-color 0.18s, box-shadow 0.18s;
+      outline: none;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    .form-group select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237e8ba3' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 38px;
+      cursor: pointer;
+    }
+
+    .form-group select option { background: var(--surface-2); color: var(--text); }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: rgba(126,139,163,0.55); }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--teal);
+      box-shadow: 0 0 0 3px rgba(45,212,191,0.12);
+    }
+
+    .form-group textarea { resize: vertical; min-height: 120px; line-height: 1.65; }
+
+    #cf-result {
+      font-size: 0.87rem;
+      border-radius: 9px;
+    }
+
+    #cf-result:not(:empty) { padding: 11px 14px; margin-bottom: 16px; }
+
+    #cf-result.cf-success {
+      background: rgba(45,212,191,0.1);
+      border: 1px solid rgba(45,212,191,0.25);
+      color: var(--teal);
+    }
+
+    #cf-result.cf-error {
+      background: rgba(239,68,68,0.1);
+      border: 1px solid rgba(239,68,68,0.25);
+      color: #f87171;
+    }
+
+    .btn-submit {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      width: 100%;
+      background: var(--teal);
+      color: #080d1a;
+      border: none;
+      border-radius: 10px;
+      padding: 13px 28px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background 0.18s, transform 0.18s, box-shadow 0.18s;
+    }
+
+    .btn-submit:hover:not(:disabled) {
+      background: #5ee0cc;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(45,212,191,0.28);
+    }
+
+    .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    @media (max-width: 860px) {
+      .contact-grid { grid-template-columns: 1fr; gap: 36px; }
+    }
+
+    @media (max-width: 560px) {
+      .form-row { grid-template-columns: 1fr; }
+      .contact-form-wrap { padding: 24px 20px; }
+    }
   </style>
 </head>
 <body>
@@ -669,6 +841,7 @@
     <nav>
       <a href="#apps" class="nav-hide-sm">Our Apps</a>
       <a href="#mission" class="nav-hide-sm">Mission</a>
+      <a href="#contact" class="nav-hide-sm">Contact</a>
       <a href="https://ko-fi.com/kingdomconnect" target="_blank" rel="noopener noreferrer" class="nav-support">Support Us ☕</a>
     </nav>
   </div>
@@ -691,6 +864,7 @@
     <div class="hero-actions">
       <a href="#apps" class="btn btn-primary">Explore Our Apps</a>
       <a href="#support" class="btn btn-outline">Support the Mission ☕</a>
+      <a href="#contact" class="btn btn-ghost">Get in Touch →</a>
     </div>
   </div>
 </section>
@@ -858,6 +1032,10 @@
       <em>does this serve God's people well?</em>
     </p>
 
+    <div style="text-align:center;margin-top:40px;" class="reveal delay-1">
+      <a href="#contact" class="btn btn-ghost">Have a question or idea? Get in touch →</a>
+    </div>
+
   </div>
 </section>
 
@@ -888,6 +1066,82 @@
   </div>
 </section>
 
+<div class="divider"></div>
+
+<!-- ══════════════════════════════
+     CONTACT
+══════════════════════════════ -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-grid">
+
+      <!-- Left: intro -->
+      <div class="reveal">
+        <span class="section-eyebrow">Get In Touch</span>
+        <h2 class="section-title">Say Hello</h2>
+        <p class="contact-lead">
+          Whether you have a question about Kingdom Connect, an idea for collaboration,
+          or simply want to say hello — we'd love to hear from you.
+        </p>
+        <ul class="contact-reasons">
+          <li>💬 Questions about Kingdom Connect</li>
+          <li>🤝 Collaboration or partnership ideas</li>
+          <li>🐛 Bug reports or feature suggestions</li>
+          <li>🙏 Prayer requests or encouragement</li>
+        </ul>
+      </div>
+
+      <!-- Right: form -->
+      <div class="contact-form-wrap reveal delay-1">
+        <form id="contact-form" novalidate>
+          <input type="hidden" name="access_key" value="75987017-cc6f-4b86-b371-ec11a5a062cb">
+          <input type="hidden" name="from_name" value="Kingdom Tech UK Website">
+          <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off">
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="cf-name">Your Name</label>
+              <input type="text" id="cf-name" name="name" required placeholder="Jane Smith" autocomplete="name">
+            </div>
+            <div class="form-group">
+              <label for="cf-email">Email Address</label>
+              <input type="email" id="cf-email" name="email" required placeholder="jane@example.com" autocomplete="email">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="cf-reason">Reason <span class="form-optional">(optional)</span></label>
+            <select id="cf-reason" name="reason">
+              <option value="">— Select a reason —</option>
+              <option>General Enquiry</option>
+              <option>Kingdom Connect</option>
+              <option>Collaboration / Partnership</option>
+              <option>Bug Report / Feature Request</option>
+              <option>Support / Ko-fi</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="cf-message">Message</label>
+            <textarea id="cf-message" name="message" required placeholder="What's on your mind?" rows="5"></textarea>
+          </div>
+
+          <div id="cf-result" role="alert" aria-live="polite"></div>
+
+          <button type="submit" id="cf-submit" class="btn-submit">
+            <span id="cf-submit-text">Send Message</span>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/>
+            </svg>
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- ══════════════════════════════
      FOOTER
 ══════════════════════════════ -->
@@ -896,6 +1150,7 @@
     <img src="images/kingdom-tech-logo-dark.png" alt="Kingdom Tech UK" class="footer-logo">
     <div class="footer-links">
       <a href="https://kingdomconnect.uk" target="_blank" rel="noopener noreferrer">Kingdom Connect</a>
+      <a href="#contact">Contact</a>
       <a href="https://ko-fi.com/kingdomconnect" target="_blank" rel="noopener noreferrer">Support Kingdom Connect</a>
       <a href="privacy-policy.html">Privacy Policy</a>
       <a href="terms-of-service.html">Terms of Service</a>
@@ -918,6 +1173,53 @@
   }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
 
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Contact form — async submission via Web3Forms
+  const contactForm = document.getElementById('contact-form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const result = document.getElementById('cf-result');
+      const submit = document.getElementById('cf-submit');
+      const label  = document.getElementById('cf-submit-text');
+      const data   = new FormData(contactForm);
+      const name   = (data.get('name')   || '').trim();
+      const reason = (data.get('reason') || '').trim();
+
+      // Build a descriptive email subject
+      data.set('subject', reason
+        ? '[' + reason + '] Message from ' + name
+        : 'New message from ' + name + ' — Kingdom Tech UK');
+
+      submit.disabled    = true;
+      label.textContent  = 'Sending…';
+      result.className   = '';
+      result.textContent = '';
+
+      try {
+        const res  = await fetch('https://api.web3forms.com/submit', {
+          method:  'POST',
+          headers: { Accept: 'application/json' },
+          body:    data,
+        });
+        const json = await res.json();
+        if (res.ok) {
+          result.className  = 'cf-success';
+          result.textContent = '\u2713 Message sent! We\'ll be in touch soon.';
+          contactForm.reset();
+        } else {
+          result.className  = 'cf-error';
+          result.textContent = json.message || 'Something went wrong. Please try again.';
+        }
+      } catch {
+        result.className  = 'cf-error';
+        result.textContent = 'Network error — please check your connection and try again.';
+      } finally {
+        submit.disabled   = false;
+        label.textContent = 'Send Message';
+      }
+    });
+  }
 </script>
 
 </body>
